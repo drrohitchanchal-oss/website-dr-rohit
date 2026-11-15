@@ -35,7 +35,6 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   const [preferredSlot, setPreferredSlot] = useState('Morning');
   const [concern, setConcern] = useState('');
   const [formError, setFormError] = useState<string | null>(null);
-  const [composedPreview, setComposedPreview] = useState<string | null>(null);
 
   const telHref = buildTelHref(config.phoneNumber);
   const waHref = buildWhatsAppHref(config.whatsappNumber);
@@ -61,7 +60,6 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   const handleAppointmentSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setFormError(null);
-    setComposedPreview(null);
 
     const trimmedName = patientName.trim();
     const trimmedPhone = patientPhone.trim();
@@ -94,12 +92,10 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
     const customWaHref = buildWhatsAppHref(config.whatsappNumber, fullMessage);
 
     if (!customWaHref) {
-      setComposedPreview(fullMessage);
       onUnconfiguredContact('whatsapp');
       return;
     }
 
-    setComposedPreview(fullMessage);
     window.open(customWaHref, '_blank', 'noopener,noreferrer');
   };
 
@@ -278,10 +274,6 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
               <h3 className="mt-1.5 font-display text-2xl font-bold text-slate-900">
                 Request Consultation Timings
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                Share your basic details below to open a pre-filled WhatsApp message directly with
-                the clinic and confirm available consultation timings.
-              </p>
 
               <form onSubmit={handleAppointmentSubmit} noValidate className="mt-6 space-y-4">
                 <div>
@@ -375,15 +367,6 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   <span>Send Request on WhatsApp</span>
                 </button>
               </form>
-
-              <div className="mt-5 rounded-xl border border-slate-200 bg-[#F8FAFC] p-4">
-                <p className="text-xs font-semibold text-slate-700">
-                  Pre-filled WhatsApp Message Preview
-                </p>
-                <p className="mt-1.5 whitespace-pre-line text-xs leading-relaxed text-slate-600">
-                  {composedPreview ?? `"${WHATSAPP_DEFAULT_MESSAGE}"`}
-                </p>
-              </div>
             </div>
           </div>
         </div>

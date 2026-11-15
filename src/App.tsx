@@ -101,7 +101,6 @@ export default function App() {
         <AboutDoctor
           config={config}
           onPhotoChange={handlePhotoChange}
-          onOpenEditor={() => setIsEditorOpen(true)}
         />
 
         <ContactSection

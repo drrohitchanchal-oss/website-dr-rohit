@@ -1,23 +1,17 @@
 import React from 'react';
-import { Award, Building2, Edit3, GraduationCap, ShieldAlert, Stethoscope } from 'lucide-react';
-import {
-  ASSOCIATION_TYPE_LABELS,
-  ClinicConfig,
-} from '../config/clinicConfig';
+import { Award, GraduationCap, Stethoscope } from 'lucide-react';
+import { ClinicConfig } from '../config/clinicConfig';
 import { DoctorPortraitFrame } from './DoctorPortraitFrame';
 
 interface AboutDoctorProps {
   config: ClinicConfig;
   onPhotoChange: (dataUrl: string | null) => void;
-  onOpenEditor: () => void;
 }
 
 export const AboutDoctor: React.FC<AboutDoctorProps> = ({
   config,
   onPhotoChange,
-  onOpenEditor,
 }) => {
-  const isUnconfirmedAssociation = config.associationType === 'unconfirmed';
 
   return (
     <section
@@ -83,46 +77,6 @@ export const AboutDoctor: React.FC<AboutDoctorProps> = ({
                   {config.experience}
                 </p>
               </div>
-            </div>
-
-            {/* Editable Professional Background / Hospital Association */}
-            <div
-              className={`mt-6 rounded-xl border p-5 ${
-                isUnconfirmedAssociation
-                  ? 'border-amber-300 bg-amber-50/70'
-                  : 'border-slate-200 bg-white'
-              }`}
-            >
-              <div className="flex flex-wrap items-start justify-between gap-3">
-                <div className="flex items-center gap-2">
-                  {isUnconfirmedAssociation ? (
-                    <ShieldAlert className="h-4 w-4 shrink-0 text-amber-800" aria-hidden="true" />
-                  ) : (
-                    <Building2 className="h-4 w-4 shrink-0 text-[#1976D2]" aria-hidden="true" />
-                  )}
-                  <h3 className="font-display text-sm font-bold text-slate-900">
-                    Professional Background &amp; Institution Reference
-                  </h3>
-                </div>
-                <button
-                  type="button"
-                  onClick={onOpenEditor}
-                  className="inline-flex min-h-[36px] items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 transition-colors hover:border-[#1976D2] hover:text-[#1976D2] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1976D2] whitespace-nowrap shrink-0 cursor-pointer"
-                >
-                  <Edit3 className="h-3.5 w-3.5" aria-hidden="true" />
-                  <span>Edit Association</span>
-                </button>
-              </div>
-
-              <p className="mt-2 text-xs font-medium text-slate-600">
-                Institution: {config.associationInstitution} · Status:{' '}
-                <span className={isUnconfirmedAssociation ? 'font-semibold text-amber-900' : 'text-slate-800'}>
-                  {ASSOCIATION_TYPE_LABELS[config.associationType]}
-                </span>
-              </p>
-              <p className="mt-2 text-sm leading-relaxed text-slate-700">
-                {config.associationDescription}
-              </p>
             </div>
 
             {/* Clinic Vision */}

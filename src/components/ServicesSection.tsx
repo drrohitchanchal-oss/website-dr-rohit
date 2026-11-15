@@ -53,10 +53,6 @@ export const ServicesSection: React.FC = () => {
               Our Healthcare Services
             </h2>
           </div>
-          <p className="max-w-md text-sm leading-relaxed text-slate-600">
-            Focused primary care consultations in Barari, Bhagalpur to help patients understand
-            their symptoms and plan appropriate next steps.
-          </p>
         </div>
 
         <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
