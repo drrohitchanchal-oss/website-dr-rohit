@@ -1,0 +1,6 @@
+{
+  "name": "Dr. Rohit Chanchal — General Physician, Barari, Bhagalpur",
+  "description": "General healthcare consultation, blood pressure checkup, and basic health checkups by Dr. Rohit Chanchal (MBBS, General Physician) in Barari, Bhagalpur, Bihar.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
